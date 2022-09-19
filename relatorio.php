@@ -20,11 +20,10 @@
                 $usuarioDao->createUsuario($usuario);
             }
         }
+
     }
 
 
-    
-    
 
 ?>
 
@@ -35,53 +34,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de IMC</title>
+    <title>Relatório Votação</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body class="bg-light p-5">
     <div class="container border border-2 rounded-4 p-4 bg-white mb-5" style="max-width: 400px;">
         <form method="POST">
-            <h1 class="mb-4 text-center">Votação</h1>
+            <h1 class="mb-4 text-center">Relatório Votação</h1>
             <div class="row">
-                <div class="mb-3">
-                    <label for="nome" class="form-label fw-bold">Nome do Eleitor:</label>
-                    <input type="text" name="nome" class="form-control form-control-lg bg-light" value="" required>
+                <div class="col-sm-6 center">
+                    <img src="presidente_1.PNG" class="img-thumbnail" alt="bob" style="width: 100%; margin-bottom: 15px;">
+                    <label>X Votos</label>
                 </div>
 
-                <div class="mb-3">
-                    <label for="cpf" class="form-label fw-bold">CPF:</label>
-                    <input type="text" name="cpf" class="form-control form-control-lg bg-light" value="" required>
-                </div>
-
-                <div class="mb-3">
-                    <label for="idade" class="form-label fw-bold">Idade:</label>
-                    <input type="text" name="idade" class="form-control form-control-lg bg-light" value="" required>
-                </div>
-
-                <div>
-                    <label for="bob">
-                    <img src="presidente_1.PNG" class="img-thumbnail" alt="bob" style="width: 50%; margin-bottom: 15px;">
-                    <input class="ml-1" type="radio" name="voto" id="bob" value="1">Bob, a esponja
-                    </label>
-                </div>
-
-                <div>
-                    <label for="lula">
-                    <img src="presidente_2.PNG" class="img-thumbnail" alt="lula" style="width: 50%; margin-bottom: 15px;">
-                    <input type="radio" name="voto" id="lula" value="2">Lula, o Molusco
-                    </label>
+                <div class="col-sm-6">
+                    <img src="presidente_2.PNG" class="img-thumbnail" alt="lula" style="width: 100%; margin-bottom: 15px;">
+                    <label>Y Votos</label>
                 </div>
             </div>
-            <div class="d-grid mb-4">
-                <input type="submit" value="Calcular" class="btn btn-outline-primary btn-lg">
-            </div>
-
-            <?php if(isset($usuario) && empty($usuario->erro)){ ?>
-            <div class="alert text-center fs-4 <?php echo $class ?>" role="alert"> 
-                <span><?php echo $usuario->getMsg(); ?></span>
-            </div>
-            <?php } ?>
         </form>
     </div>
 
