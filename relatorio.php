@@ -3,27 +3,7 @@
     require_once('app/Controllers/ControllerUsuario.php');
 
     $usuarioDao = new ControllerUsuario();
-    
-    if(!empty($_POST['nome']) && !empty($_POST['cpf']) && !empty($_POST['idade']) && !empty($_POST['voto'])){
-        $usuario = new Usuario($_POST['nome'], $_POST['cpf'],$_POST['idade'],$_POST['voto']);
-        
-        //var_dump($usuario); //Obter informações da variável
-        $usuario ->validarDados();
-
-        if (empty($usuario->erro)) {
-            if ($usuario->getMsg() == "Idade Inválida!") {
-                $class = "alert-danger";
-            } elseif ($usuario->getMsg() == "CPF Inválido!") {
-                $class = "alert-danger";
-            }else {
-                $class = "alert-success";
-                $usuarioDao->createUsuario($usuario);
-            }
-        }
-
-    }
-
-
+    $result = new Votos();
 
 ?>
 
@@ -45,12 +25,14 @@
             <div class="row">
                 <div class="col-sm-6 center">
                     <img src="presidente_1.PNG" class="img-thumbnail" alt="bob" style="width: 100%; margin-bottom: 15px;">
-                    <label>X Votos</label>
+                    <p class="text-center fs-5"><?php echo $result->resultadoVoto(22); ?> Votos</p>
+                    <p class="text-center fs-5">Percentual: <?php echo $number = number_format(($result->resultadoVoto(22)/$result->totalVotos())*100, 1, '.', '');?>%</p>
                 </div>
 
                 <div class="col-sm-6">
                     <img src="presidente_2.PNG" class="img-thumbnail" alt="lula" style="width: 100%; margin-bottom: 15px;">
-                    <label>Y Votos</label>
+                    <p class="text-center fs-5"><?php echo $result->resultadoVoto(13); ?> Votos</p>
+                    <p class="text-center fs-5">Percentual: <?php echo $number = number_format(($result->resultadoVoto(13)/$result->totalVotos())*100, 1, '.', '');?>%</p>
                 </div>
             </div>
         </form>

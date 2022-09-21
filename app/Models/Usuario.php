@@ -66,11 +66,11 @@ class Usuario{
             $this->erro["erro_nome"] = "O campo nome está vazio!";
         }
         else if($this->idade < 16 || $this->idade > 150 || !is_numeric($this->idade)){
-            $this->erro["erro_idade"] = "Idade Inválida!";
+            //$this->erro["erro_idade"] = "Idade Inválida!";
             $this->msg = "Idade Inválida!";
         }
         else if(!is_numeric($this->cpf)){
-            $this->erro["erro_cpf"] = "CPF Inválido!";
+            //$this->erro["erro_cpf"] = "CPF Inválido!";
             $this->msg = "CPF Inválido!";
         }
         else if(empty($this->erro)){

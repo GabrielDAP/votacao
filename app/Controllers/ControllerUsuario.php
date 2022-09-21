@@ -41,4 +41,36 @@ class ControllerUsuario
     }
 }
 
+
+class Votos
+{
+    public function resultadoVoto($result){
+        try{
+            $queryVoto = "SELECT COUNT(voto) AS totalVotos FROM usuarios WHERE voto='$result'";
+            $stmt = ConexaoDB::getConn()->prepare($queryVoto);
+            $stmt->execute();
+            if($stmt->rowCount()){
+                $result = $stmt->fetch(PDO::FETCH_ASSOC);
+                return $result["totalVotos"];
+            }
+        }catch(PDOException $e){
+            echo $e->getMessage();
+        }
+    }
+
+    public function totalVotos(){
+        try{
+            $queryVoto = "SELECT COUNT(voto) AS totalVotos FROM usuarios";
+            $stmt = ConexaoDB::getConn()->prepare($queryVoto);
+            $stmt->execute();
+            if($stmt->rowCount()){
+                $result = $stmt->fetch(PDO::FETCH_ASSOC);
+                return $result["totalVotos"];
+            }
+        }catch(PDOException $e){
+            echo $e->getMessage();
+        }
+    }
+}
+
 ?>

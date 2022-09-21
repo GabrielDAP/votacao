@@ -11,13 +11,11 @@
         $usuario ->validarDados();
 
         if (empty($usuario->erro)) {
-            if ($usuario->getMsg() == "Idade Inválida!") {
-                $class = "alert-danger";
-            } elseif ($usuario->getMsg() == "CPF Inválido!") {
-                $class = "alert-danger";
-            }else {
+            if ($usuario->getMsg() == "Votação efetuada com sucesso!") {
                 $class = "alert-success";
                 $usuarioDao->createUsuario($usuario);
+            }else {
+                $class = "alert-danger";
             }
         }
     }
@@ -46,35 +44,35 @@
             <div class="row">
                 <div class="mb-3">
                     <label for="nome" class="form-label fw-bold">Nome do Eleitor:</label>
-                    <input type="text" name="nome" class="form-control form-control-lg bg-light" value="" required>
+                    <input type="text" name="nome" class="form-control form-control-lg bg-light" value="" required placeholder="Digite seu nome">
                 </div>
 
                 <div class="mb-3">
                     <label for="cpf" class="form-label fw-bold">CPF:</label>
-                    <input type="text" name="cpf" class="form-control form-control-lg bg-light" value="" required>
+                    <input type="text" name="cpf" class="form-control form-control-lg bg-light" value="" required placeholder="Digite seu CPF" minlength="11" maxlength="11">
                 </div>
 
                 <div class="mb-3">
                     <label for="idade" class="form-label fw-bold">Idade:</label>
-                    <input type="text" name="idade" class="form-control form-control-lg bg-light" value="" required>
+                    <input type="text" name="idade" class="form-control form-control-lg bg-light" value="" required placeholder="Digite sua idade">
                 </div>
 
                 <div>
                     <label for="bob">
                     <img src="presidente_1.PNG" class="img-thumbnail" alt="bob" style="width: 50%; margin-bottom: 15px;">
-                    <input class="ml-1" type="radio" name="voto" id="bob" value="1">Bob, a esponja
+                    <input class="ml-1" type="radio" name="voto" id="bob" value="22">Bob, a esponja
                     </label>
                 </div>
 
                 <div>
                     <label for="lula">
                     <img src="presidente_2.PNG" class="img-thumbnail" alt="lula" style="width: 50%; margin-bottom: 15px;">
-                    <input type="radio" name="voto" id="lula" value="2">Lula, o Molusco
+                    <input type="radio" name="voto" id="lula" value="13">Lula, o Molusco
                     </label>
                 </div>
             </div>
             <div class="d-grid mb-4">
-                <input type="submit" value="Calcular" class="btn btn-outline-primary btn-lg">
+                <input type="submit" value="Votar" class="btn btn-outline-primary btn-lg">
             </div>
 
             <?php if(isset($usuario) && empty($usuario->erro)){ ?>
@@ -82,10 +80,14 @@
                 <span><?php echo $usuario->getMsg(); ?></span>
             </div>
             <?php } ?>
+            <div class="container text-center d-grid mb-4">
+                <a class="btn btn-warning btn-lg rounded-2 mb-4" href="relatorio.php" target="_blank">Relatório</a>
+            </div>
         </form>
     </div>
-
-    <?php if($usuarioDao-> readUsuario()){ ?>
+    
+    
+  <!-- <?php if($usuarioDao-> readUsuario()){ ?>
         <div class="container">
             <h1>Registros</h1>
             <table class="table table-striped">
@@ -111,7 +113,7 @@
                 </tbody>
             </table>
         </div>
-    <?php } ?>
+    <?php } ?> -->
 
     <script src="js/bootstrap.bundle.min.js"></script>
 </body>
