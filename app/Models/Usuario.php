@@ -65,6 +65,10 @@ class Usuario{
         if(empty($this->nome)){
             $this->erro["erro_nome"] = "O campo nome está vazio!";
         }
+		else if(is_numeric($this->nome)){
+            //$this->erro["erro_nome2"] = "Nome Inválido!";
+            $this->msg = "Nome Inválido!";
+        }
         else if($this->idade < 16 || $this->idade > 150 || !is_numeric($this->idade)){
             //$this->erro["erro_idade"] = "Idade Inválida!";
             $this->msg = "Idade Inválida!";
